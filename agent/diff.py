@@ -20,6 +20,66 @@ can belong to each run_tests step.
 
 from __future__ import annotations
 
+import json
+
+
+def _matches_value(template, actual):
+    if template == "$fill":
+        return True
+    if isinstance(template, dict):
+        return isinstance(actual, dict) and all(
+            k in actual and _matches_value(v, actual[k]) for k, v in template.items())
+    if isinstance(template, list):
+        return isinstance(actual, list) and len(template) == len(actual) and all(
+            _matches_value(a, b) for a, b in zip(template, actual))
+    return type(template) is type(actual) and template == actual
+
+
+def _matches(step, call):
+    if step.get("tool") != call.get("name"):
+        return False
+    try:
+        args = json.loads(step["args_json"]) if "args_json" in step else step.get("args", {})
+    except (ValueError, TypeError):
+        return False
+    return _matches_value(args, call.get("input", {}))
+
+
+def match_calls(plan, trace):
+    """Return (plan index or None, call) pairs in execution order.
+
+    Explicit ids permit recorded retries; without ids each step consumes one
+    matching call, with ambiguous candidates resolved in plan order.
+    """
+    steps = plan.get("steps", [])
+    used = set()
+    matches = []
+    for call in trace:
+        if call.get("type") != "tool_call":
+            continue
+        explicit = call.get("plan_step")
+        candidates = [i for i, step in enumerate(steps)
+                      if (step.get("id") == explicit if explicit is not None else i not in used)
+                      and _matches(step, call)]
+        index = candidates[0] if candidates else None
+        if index is not None:
+            used.add(index)
+        matches.append((index, call))
+    return matches
+
 
 def diff(plan: dict, trace: list[dict]) -> dict:
-    raise NotImplementedError("Assignment 2 Part E: the diff")
+    labels = {step["id"]: "skipped" for step in plan.get("steps", [])}
+    extra = []
+    highest = -1
+    for index, call in match_calls(plan, trace):
+        if index is None:
+            extra.append(call["step"])
+            continue
+        step_id = plan["steps"][index]["id"]
+        if index < highest:
+            labels[step_id] = "reordered"
+        elif labels[step_id] == "skipped":
+            labels[step_id] = "executed"
+        highest = max(highest, index)
+    return {"steps": labels, "extra": extra}

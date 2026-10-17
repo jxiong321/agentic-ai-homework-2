@@ -1,0 +1,18 @@
+{
+  "about": "Steps executed and repository paths this run has already seen; not a to-do list.",
+  "steps_done": [
+    1,
+    2,
+    2,
+    2
+  ],
+  "paths": [
+    "CHANGELOG.md",
+    "README.md",
+    "docs/API.md",
+    "docs/ARCHITECTURE.md",
+    "package.json",
+    "src/api/reports.ts",
+    "src/api/uploads.ts"
+  ]
+}

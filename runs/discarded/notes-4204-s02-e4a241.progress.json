@@ -1,0 +1,13 @@
+{
+  "about": "Steps executed and repository paths this run has already seen; not a to-do list.",
+  "steps_done": [
+    1,
+    2,
+    2,
+    3,
+    4
+  ],
+  "paths": [
+    "src/i18n/en.json"
+  ]
+}

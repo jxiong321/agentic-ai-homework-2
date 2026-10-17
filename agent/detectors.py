@@ -34,21 +34,46 @@ the trace, and say how in your report.
 
 from __future__ import annotations
 
+import json
+from agent.diff import match_calls
+
 
 def repeat_check(trace: list[dict]) -> list[list]:
-    raise NotImplementedError("Assignment 2 Part E: the repeat check")
+    groups = {}
+    for call in trace:
+        if call.get("type") == "tool_call":
+            key = (call.get("name"), json.dumps(call.get("input", {}), sort_keys=True))
+            groups.setdefault(key, []).append(call["step"])
+    return [group for group in groups.values() if len(group) > 1]
 
 
 def orphan_check(plan: dict) -> list:
-    raise NotImplementedError("Assignment 2 Part E: the orphan check")
+    steps = plan.get("steps", [])
+    return [step["id"] for i, step in enumerate(steps[:-1])
+            if not any(step["id"] in later.get("depends_on", []) for later in steps[i + 1:])]
 
 
 def expected_result_check(plan: dict, trace: list[dict]) -> list:
-    raise NotImplementedError("Assignment 2 Part E: the expected-result check")
+    succeeded = {index for index, call in match_calls(plan, trace)
+                 if index is not None and not call.get("is_error", False)}
+    return [step["id"] for index, step in enumerate(plan.get("steps", []))
+            if index not in succeeded]
 
 
 def ladder(plan: dict, trace: list[dict]) -> dict:
-    raise NotImplementedError("Assignment 2 Part E: questions 1 to 3")
+    repeats = repeat_check(trace)
+    if all("depends_on" in step for step in plan.get("steps", [])):
+        unused = orphan_check(plan)
+    else:
+        # In incomplete historical traces this is a redundancy heuristic, not
+        # proof of data flow: flag later exact repeats with the same recorded result.
+        calls = {call["step"]: call for call in trace if call.get("type") == "tool_call"}
+        unused = [turn for group in repeats for turn in group[1:]
+                  if calls[turn].get("result_excerpt") == calls[group[0]].get("result_excerpt")
+                  and calls[turn].get("result_chars") == calls[group[0]].get("result_chars")]
+    missing = expected_result_check(plan, trace)
+    return {key: {"fired": bool(ids), "ids": ids}
+            for key, ids in (("q1", repeats), ("q2", unused), ("q3", missing))}
 
 
 if __name__ == "__main__":

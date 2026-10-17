@@ -1,0 +1,17 @@
+{
+  "about": "Steps executed and repository paths this run has already seen; not a to-do list.",
+  "steps_done": [
+    1,
+    2,
+    2,
+    3,
+    4
+  ],
+  "paths": [
+    "CHANGELOG.md",
+    "docs/ARCHITECTURE.md",
+    "src/notifications/rollup.ts",
+    "src/util/dates.ts",
+    "test/dates.test.ts"
+  ]
+}

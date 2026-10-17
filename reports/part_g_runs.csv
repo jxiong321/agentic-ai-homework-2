@@ -1,0 +1,13 @@
+run_id,issue,sweep,notes,right,questions,seen_questions,compactions,estimated_notes_tokens,total_tokens,cost_usd,latency_s,terminal_reason
+notes-4203-s01-454090,4203,1,off,6,6,1,4,0,7182,0.004359,8.368,completed
+notes-4203-s01-84e221,4203,1,on,5,6,1,4,194,7320,0.004204599999999999,8.928,completed
+notes-4203-s02-3b1d4c,4203,2,on,6,6,1,4,194,7432,0.0043944,8.133,completed
+notes-4203-s02-d6bcbb,4203,2,off,6,6,1,4,0,7063,0.0042111,7.557,completed
+notes-4204-s01-2977e0,4204,1,on,6,6,0,1,80,2635,0.0018641,5.071,escalated
+notes-4204-s01-5c845b,4204,1,off,6,6,1,4,0,6837,0.0040311,7.194,completed
+notes-4204-s02-96e1b6,4204,2,off,6,6,1,4,0,9082,0.005578,10.646,completed
+notes-4204-s02-b888d9,4204,2,on,6,6,3,4,332,12022,0.007428,10.922,completed
+notes-4206-s01-3f7041,4206,1,on,3,6,3,3,496,11823,0.0069217,11.582,completed
+notes-4206-s01-884cf0,4206,1,off,3,6,3,2,0,10564,0.0060996,9.626,completed
+notes-4206-s02-50307e,4206,2,on,6,6,0,1,80,2723,0.0018816999999999998,4.017,escalated
+notes-4206-s02-ea3dd0,4206,2,off,3,6,3,2,0,10644,0.0061434,9.534,completed

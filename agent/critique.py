@@ -40,10 +40,58 @@ Keep your prompts in prompts/.
 
 from __future__ import annotations
 
+import json
+
+from harness import ROOT
+from harness.formats import LABELS, parse_triage_comment, normalize_path
+from harness.trace import read_trace
+
 
 def verify(draft: str, ctx) -> dict:
-    raise NotImplementedError("Assignment 2 Part D: the external checks")
+    reasons = []
+    lines = draft.strip().splitlines() if isinstance(draft, str) else []
+    label, path = parse_triage_comment(draft if isinstance(draft, str) else "")
+    if (len(lines) < 2 or not lines[0].lower().startswith("label:")
+            or not lines[1].lower().startswith("file:")
+            or label not in LABELS or path is None):
+        reasons.append("format: start with label: <bug|feature|question|docs> and file: <path|none>")
+    if path is not None and path != "none":
+        root = (ctx.root / "fixtures" / "repo").resolve()
+        target = (root / path).resolve()
+        if root not in target.parents or not target.is_file():
+            reasons.append("existence: named path is not a file in the repository")
+        seen = {normalize_path(p) for row in read_trace(ctx.trace.path)
+                if row.get("run_id") == ctx.run_id and row.get("type") == "tool_call"
+                and row.get("name") in ("search_repo", "read_file") and not row.get("is_error")
+                for p in row.get("paths", [])}
+        if path not in seen:
+            reasons.append("evidence: this run has not seen the named path in a search or read")
+    if label in LABELS and path is not None:
+        if (label == "question") != (path == "none"):
+            reasons.append("consistency: question requires none; every other label requires a file")
+    return {"passed": not reasons, "reasons": reasons}
 
 
 def self_critique(client, draft: str, evidence: dict, trace=None) -> dict:
-    raise NotImplementedError("Assignment 2 Part D: the self critique")
+    schema = {
+        "type": "object",
+        "properties": {"decision": {"type": "string", "enum": ["accept", "revise"]},
+                       "reason": {"type": ["string", "null"]}},
+        "required": ["decision", "reason"], "additionalProperties": False,
+    }
+    response = client.create(
+        system=(ROOT / "prompts/self_critique.md").read_text(),
+        messages=[{"role": "user", "content": json.dumps({"draft": draft, "evidence": evidence})}],
+        tools=[{"name": "review_draft", "description": "Accept the draft or request a revision.",
+                "input_schema": schema, "strict": True}],
+    )
+    if trace is not None:
+        trace.model_call(0, response, purpose="critique")
+    calls = response.tool_calls
+    if len(calls) == 1 and calls[0].name == "review_draft":
+        verdict = calls[0].input
+        if verdict.get("decision") == "accept":
+            return {"decision": "accept", "reason": None}
+        if verdict.get("decision") == "revise":
+            return {"decision": "revise", "reason": str(verdict.get("reason") or "Reviewer requested revision.")}
+    return {"decision": "revise", "reason": "Reviewer did not return a valid structured verdict."}

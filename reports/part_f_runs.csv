@@ -1,0 +1,209 @@
+configuration,run_id,issue,sweep,passed,terminal_reason,model_calls,tokens,latency_s,cost_usd,plan_overhead_share,plan_only_share,critique_overhead_share,revisions,revision_rejections,schema_rejections,review_rounds,draft_changed,initial_draft_passed,held,repeat,off_plan,first_draft,final_draft,posted_comment,review_reasons
+agent,agent-4201-s01-be2adf,4201,1,True,model_stopped,5,4246,4.769,0.0014916,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/notifications/templates.ts",[]
+agent,agent-4201-s02-aea014,4201,2,True,model_stopped,5,4253,5.711,0.0015091,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/notifications/templates.ts",[]
+agent,agent-4201-s03-8039dd,4201,3,True,model_stopped,5,4327,5.363,0.0015929,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/notifications/templates.ts
+
+The password reset email generation falls back to `http://localhost:3000` when `process.env.PUBLIC_URL` is not set, rather than using the production application URL configuration or request host.",[]
+agent,agent-4202-s01-b8881e,4202,1,True,model_stopped,9,22577,9.197,0.00609207,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: feature
+file: src/exportUtils.ts",[]
+agent,agent-4202-s02-5245d2,4202,2,True,model_stopped,6,6300,5.189,0.0021232,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: feature
+file: src/exportUtils.ts",[]
+agent,agent-4202-s03-ccc3a8,4202,3,True,model_stopped,9,22575,8.311,0.00554703,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: feature
+file: src/exportUtils.ts",[]
+agent,agent-4203-s01-c586b3,4203,1,True,model_stopped,6,7017,5.866,0.0023889,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/ingest/parser.ts",[]
+agent,agent-4203-s02-e1cab5,4203,2,True,model_stopped,6,7011,4.976,0.0023739,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/ingest/parser.ts",[]
+agent,agent-4203-s03-546685,4203,3,True,model_stopped,6,7012,4.401,0.0023742,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/ingest/parser.ts",[]
+agent,agent-4204-s01-8d6644,4204,1,True,model_stopped,11,21419,11.197,0.0063547199999999995,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/util/dates.ts",[]
+agent,agent-4204-s02-172b08,4204,2,True,turn_limit,12,20312,11.399,0.0066062,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/util/dates.ts",[]
+agent,agent-4204-s03-6b9091,4204,3,True,model_stopped,9,16092,8.935,0.0051994,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/util/dates.ts",[]
+agent,agent-4205-s01-4e3373,4205,1,True,model_stopped,6,8210,6.356,0.002925,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: question
+file: none
+
+Hi there!
+
+To answer your security team's question:
+
+- **After a successful import:** The worker deletes the original uploaded file from object storage immediately. Only the parsed and deduplicated transactions are kept in the database.
+- **After a failed import:** The original file is retained in object storage for 7 days so that it can be inspected, and is then automatically deleted by an hourly purge job.
+
+Let us know if you need any further details for your vendor review!",[]
+agent,agent-4205-s02-3505b5,4205,2,True,model_stopped,6,8055,6.574,0.0027993,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: question
+file: none
+
+Hi there!
+
+When an import completes successfully, the original uploaded file is deleted from object storage; only the parsed transactions are kept. 
+
+If an import fails, the uploaded file is kept for 7 days so it can be inspected, after which it is deleted by an hourly purge process.",[]
+agent,agent-4205-s03-03b571,4205,3,True,model_stopped,7,10447,6.924,0.0036291,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,"label: question
+file: none
+
+The user is asking a question about file retention policy after imports complete, and no code changes are needed.
+
+According to the architecture documentation (`docs/ARCHITECTURE.md`):
+- After a successful import, the worker deletes the uploaded file from object storage, and only the parsed transactions are kept.
+- Uploads that fail to import are kept for 7 days so the original file can be inspected, then deleted by an hourly purge.",[]
+agent,agent-4206-s01-eeecea,4206,1,False,turn_limit,12,19514,12.335,0.0063272,0.0,0.0,0.0,0,0,0,0,False,,False,True,0,,,,[]
+agent,agent-4206-s02-76da92,4206,2,False,turn_limit,12,19781,11.221,0.006409499999999999,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,,[]
+agent,agent-4206-s03-0e5a5c,4206,3,False,turn_limit,12,22736,11.194,0.007300399999999999,0.0,0.0,0.0,0,0,0,0,False,,False,False,0,,,,[]
+planned_off,planned-4201-s01-7e118c,4201,1,True,completed,4,3920,6.759,0.0020406,0.2685001417635384,0.2685001417635384,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: src/notifications/templates.ts",[]
+planned_off,planned-4201-s02-b02d41,4201,2,False,escalated,2,1861,2.756,0.0013019,0.6217990807616546,0.6217990807616546,0.0,0,0,0,0,False,,False,False,1,,,,[]
+planned_off,planned-4201-s03-3e0fa2,4201,3,True,completed,5,5167,7.465,0.0030791,0.42352415026833634,0.42352415026833634,0.0,0,0,1,0,False,,False,False,0,,,"label: bug
+file: src/notifications/templates.ts",[]
+planned_off,planned-4202-s01-acd468,4202,1,False,completed,6,9646,7.359,0.0044008,0.23557638656399954,0.1056801696239259,0.0,1,0,0,0,False,,False,False,0,,,"label: feature
+file: src/export/tsv.ts",[]
+planned_off,planned-4202-s02-ad480d,4202,2,True,completed,7,9403,9.103,0.0051749,0.37333493339733587,0.22728909156366256,0.0,1,0,1,0,False,,False,False,0,,,"label: feature
+file: src/exportUtils.ts",[]
+planned_off,planned-4202-s03-841448,4202,3,False,completed,6,7546,8.986,0.003894,0.3141807494489346,0.13916238060249816,0.0,1,0,0,0,False,,False,False,0,,,"label: feature
+file: src/export/csv.ts",[]
+planned_off,planned-4203-s01-3c8b5c,4203,1,False,completed,4,3896,3.524,0.002029,0.27018544935805994,0.27018544935805994,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: none",[]
+planned_off,planned-4203-s02-1bd9cb,4203,2,False,completed,4,3901,4.509,0.0020348999999999996,0.26995438996579246,0.26995438996579246,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: none",[]
+planned_off,planned-4203-s03-f3eea6,4203,3,False,completed,4,3919,3.771,0.0020645,0.2694167852062589,0.2694167852062589,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: none",[]
+planned_off,planned-4204-s01-6fea68,4204,1,False,completed,4,3795,4.394,0.0020602999999999997,0.28050947867298576,0.28050947867298576,0.0,0,0,0,0,False,,False,False,0,,,"label: bug
+file: none",[]
+planned_off,planned-4204-s02-a180f4,4204,2,False,completed,6,5984,6.892,0.0035134,0.4045742840668845,0.18201037862771477,0.0,1,0,0,0,False,,False,False,0,,,"label: bug
+file: src/services/email/rollup.js",[]
+planned_off,planned-4204-s03-a85bd6,4204,3,False,escalated,4,3832,6.879,0.0025751999999999997,0.6513819095477387,0.2974246231155779,0.0,1,0,0,0,False,,False,False,1,,,,[]
+planned_off,planned-4205-s01-71c6dc,4205,1,False,completed,6,8088,6.577,0.004133599999999999,0.2951312910284464,0.12951312910284463,0.0,1,0,0,0,False,,False,False,0,,,"label: docs
+file: docs/ARCHITECTURE.md",[]
+planned_off,planned-4205-s02-ff68de,4205,2,True,completed,6,8234,8.034,0.0041334,0.2876437550147098,0.1266381385397165,0.0,1,0,0,0,False,,False,False,0,,,"label: question
+file: none",[]
+planned_off,planned-4205-s03-dc0031,4205,3,False,completed,4,5366,4.424,0.002492,0.19073514602215508,0.19073514602215508,0.0,0,0,0,0,False,,False,False,0,,,"label: question
+file: docs/ARCHITECTURE.md",[]
+planned_off,planned-4206-s01-03c067,4206,1,False,completed,6,5758,7.203,0.0034455999999999996,0.4227446252762708,0.1902752662246333,0.0,1,0,0,0,False,,False,False,0,,,"label: bug
+file: src/export/csv.ts",[]
+planned_off,planned-4206-s02-5f5e75,4206,2,False,escalated,6,6695,7.27,0.0042635,0.5853615520282187,0.1670194003527337,0.0,2,0,0,0,False,,False,False,0,,,,[]
+planned_off,planned-4206-s03-f36e06,4206,3,False,completed,8,9796,8.619,0.0052179999999999995,0.37579908675799084,0.10810502283105022,0.0,2,0,0,0,False,,False,False,0,,,"label: bug
+file: src/export/csv.ts",[]
+planned_self,planned-4201-s01-011003,4201,1,True,completed,5,5180,4.873,0.0024978,0.19932645758787623,0.19932645758787623,0.2569985266259735,0,0,0,1,False,True,False,False,0,"label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts",[]
+planned_self,planned-4201-s02-f86c6d,4201,2,True,completed,5,5210,5.713,0.002542,0.1987408184679958,0.1987408184679958,0.25624344176285413,0,0,0,1,False,True,False,False,0,"label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts",[]
+planned_self,planned-4201-s03-cc5b94,4201,3,True,completed,5,5146,5.898,0.0024502,0.2000422475707647,0.2000422475707647,0.2579214195183777,0,0,0,1,False,True,False,False,0,"label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts",[]
+planned_self,planned-4202-s01-ebfdfd,4202,1,False,completed,7,9051,7.721,0.0043895,0.25536791314837154,0.11423401688781665,0.18226779252110978,1,0,0,1,False,False,False,False,0,"label: feature
+file: src/export/csv.ts","label: feature
+file: src/export/csv.ts","label: feature
+file: src/export/csv.ts",[]
+planned_self,planned-4202-s02-592a2d,4202,2,False,escalated,4,4906,4.672,0.0037091999999999997,0.8616610953972743,0.2435073283620468,0.0,2,2,2,0,False,,False,False,0,,,,[]
+planned_self,planned-4202-s03-05732d,4202,3,False,completed,8,14956,11.068,0.00681,0.23906474820143886,0.0681294964028777,0.26697841726618704,2,1,1,1,False,False,False,False,0,"label: feature
+file: src/api/reports.ts","label: feature
+file: src/api/reports.ts","label: feature
+file: src/api/reports.ts",[]
+planned_self,planned-4203-s01-1bd412,4203,1,False,escalated,7,7646,7.757,0.0035214,0.1336060948081264,0.1336060948081264,0.5071952595936795,0,0,0,2,True,False,True,False,0,"label: bug
+file: src/import.js","label: bug
+file: none",,"[""The search results only pointed to src/i18n/en.json for the error string. We need to search for where errors.rowShape or CSV parsing / row shape validation is implemented in the codebase (likely via search_repo or listing files) to identify the correct source file, as src/import.js has not been verified to exist or contain the logic yet."", ""The issue describes a real bug with CSV uploads failing (likely due to Windows line endings like CRLF or BOM in the new accounting export tool), so file should not be none. Further investigation of the CSV parser code is needed to identify the correct file.""]"
+planned_self,planned-4203-s02-c981a2,4203,2,False,escalated,7,7722,6.42,0.0036585999999999997,0.13315523059617548,0.13315523059617548,0.5053430821147357,0,0,0,2,True,False,True,False,0,"label: bug
+file: src/i18n/en.json","label: bug
+file: none",,"[""The issue describes a functional bug with CSV uploads rejecting files from a new tool (likely related to BOM or line endings, such as Windows CRLF or UTF-8 BOM), not a problem with the translation string in src/i18n/en.json. The file should not be an i18n JSON file."", ""The issue reports a bug with file uploads failing due to a malformed row error when using a new Windows accounting export tool. The file should not be 'none'; further searching of the repository is needed to locate the CSV parsing code (e.g. where 'errors.rowShape' is used) so that the correct file containing the bug can be identified.""]"
+planned_self,planned-4203-s03-747967,4203,3,False,escalated,7,7709,8.335,0.0036151,0.13306168329352255,0.13306168329352255,0.5047070394829282,0,0,0,2,True,False,True,False,0,"label: bug
+file: src/importers/csv.ts","label: bug
+file: none",,"[""The draft points to src/importers/csv.ts, but that file was never searched for, read, or verified in the evidence. Only issue #4203 and src/i18n/en.json were checked. We need to find the correct file implementing CSV imports using search tools before specifying a file path."", ""The issue describes a bug where CSV uploads fail with \\\""Malformed row\\\"" on row 1 due to a change in the accounting export tool (likely Windows line endings/BOM), which requires investigating the CSV parsing code rather than setting file to none.""]"
+planned_self,planned-4204-s01-c6b1bc,4204,1,False,completed,9,9631,11.073,0.0048363,0.24022410244683284,0.10827806997484564,0.4048707980791219,1,0,0,2,True,False,False,False,0,"label: bug
+file: src/services/email.py","label: bug
+file: none","label: bug
+file: none","[""The search did not verify that src/services/email.py exists or is the correct file; more file searching/listing is needed to locate email functionality.""]"
+planned_self,planned-4204-s02-921c3e,4204,2,False,completed,5,4953,4.667,0.0024253,0.2092355280600972,0.2092355280600972,0.25475033141847103,0,0,0,1,False,False,False,False,0,"label: bug
+file: none","label: bug
+file: none","label: bug
+file: none",[]
+planned_self,planned-4204-s03-55cfcf,4204,3,False,completed,7,7244,6.933,0.003238,0.14008875739644971,0.14008875739644971,0.5031065088757396,0,0,0,2,False,False,False,False,0,"label: bug
+file: none","label: bug
+file: none","label: bug
+file: none","[""The issue is a bug regarding time zones and email delivery, but the search was only cursory and no specific source file implementing the email schedule/rollup was identified yet, so 'file: none' is premature without further investigation.""]"
+planned_self,planned-4205-s01-23168e,4205,1,False,completed,7,10393,8.114,0.0049835,0.22556312205343113,0.09921424829753797,0.23478260869565218,1,0,0,1,False,False,False,False,0,"label: question
+file: docs/ARCHITECTURE.md","label: question
+file: docs/ARCHITECTURE.md","label: question
+file: docs/ARCHITECTURE.md",[]
+planned_self,planned-4205-s02-676cf9,4205,2,True,completed,9,13421,10.56,0.0065167,0.2750427211327203,0.07706078606884205,0.19301814630970787,2,0,0,1,False,True,False,False,0,"label: question
+file: none","label: question
+file: none","label: question
+file: none",[]
+planned_self,planned-4205-s03-6dccca,4205,3,False,escalated,2,1824,2.445,0.0012797999999999998,0.6351441985244802,0.6351441985244802,0.0,0,0,0,0,False,,False,False,1,,,,[]
+planned_self,planned-4206-s01-6e3143,4206,1,False,completed,9,12068,9.646,0.0060404000000000005,0.3068927789934354,0.0863420860685631,0.14204959883296864,2,0,0,1,False,False,False,False,0,"label: bug
+file: src/export/csv.ts","label: bug
+file: src/export/csv.ts","label: bug
+file: src/export/csv.ts",[]
+planned_self,planned-4206-s02-a0b585,4206,2,False,escalated,7,8082,9.98,0.0055112,0.6465039676598293,0.283575385536757,0.0,2,0,1,0,False,,False,True,0,,,,[]
+planned_self,planned-4206-s03-f69680,4206,3,False,completed,5,4387,5.561,0.0023390999999999998,0.24145843957164712,0.24145843957164712,0.20550739418663946,0,0,0,1,False,False,False,False,0,"label: bug
+file: src/export/csv.ts","label: bug
+file: src/export/csv.ts","label: bug
+file: src/export/csv.ts",[]
+planned_external,planned-4201-s01-f577a7,4201,1,True,completed,4,3946,4.384,0.0020968,0.2681959784763523,0.2681959784763523,0.0,0,0,0,1,False,True,False,False,0,"label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts",[]
+planned_external,planned-4201-s02-1a69cb,4201,2,True,completed,4,3878,5.35,0.0019752,0.26987745796523227,0.26987745796523227,0.0,0,0,0,1,False,True,False,False,0,"label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts",[]
+planned_external,planned-4201-s03-0523eb,4201,3,True,completed,4,3949,6.406,0.0020998999999999996,0.26804415510897256,0.26804415510897256,0.0,0,0,0,1,False,True,False,False,0,"label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts","label: bug
+file: src/notifications/templates.ts",[]
+planned_external,planned-4202-s01-29ba9b,4202,1,False,escalated,4,4501,5.09,0.0028396999999999997,0.5591004184100419,0.24764644351464435,0.0,1,0,0,0,False,,False,False,1,,,,[]
+planned_external,planned-4202-s02-9cfe05,4202,2,False,completed,6,9788,8.434,0.0046083999999999995,0.23770491803278687,0.10489587948604343,0.0,1,0,0,1,False,False,False,False,0,"label: feature
+file: src/api/reports.ts","label: feature
+file: src/api/reports.ts","label: feature
+file: src/api/reports.ts",[]
+planned_external,planned-4202-s03-dca9b6,4202,3,True,completed,8,12731,11.168,0.006355899999999999,0.30143375367075487,0.08179305579547418,0.0,2,0,0,1,False,True,False,False,0,"label: feature
+file: src/exportUtils.ts","label: feature
+file: src/exportUtils.ts","label: feature
+file: src/exportUtils.ts",[]
+planned_external,planned-4203-s01-7bf71f,4203,1,False,completed,5,5007,5.206,0.0023688999999999997,0.20528939952308692,0.20528939952308692,0.24149143724257532,0,0,0,2,True,False,False,False,0,"label: bug
+file: none","label: bug
+file: src/i18n/en.json","label: bug
+file: src/i18n/en.json","[""consistency: question requires none; every other label requires a file""]"
+planned_external,planned-4203-s02-1e8c7d,4203,2,False,completed,5,5045,5.233,0.0024286999999999998,0.2045798228559084,0.2045798228559084,0.24065672931518686,0,0,0,2,True,False,False,False,0,"label: bug
+file: none","label: bug
+file: src/i18n/en.json","label: bug
+file: src/i18n/en.json","[""consistency: question requires none; every other label requires a file""]"
+planned_external,planned-4203-s03-259478,4203,3,False,completed,5,5066,5.596,0.0024657999999999998,0.2042709232096635,0.2042709232096635,0.24029335634167387,0,0,0,2,True,False,False,False,0,"label: bug
+file: none","label: bug
+file: src/i18n/en.json","label: bug
+file: src/i18n/en.json","[""consistency: question requires none; every other label requires a file""]"
+planned_external,planned-4204-s01-99bb7c,4204,1,False,escalated,5,4806,5.655,0.0022998,0.21444746376811594,0.21444746376811594,0.24071557971014493,0,0,0,2,False,False,True,False,0,"label: bug
+file: none","label: bug
+file: none",,"[""consistency: question requires none; every other label requires a file"", ""consistency: question requires none; every other label requires a file""]"
+planned_external,planned-4204-s02-b9fbb4,4204,2,False,escalated,7,7216,8.266,0.0039974,0.3336988876703744,0.14836283879053735,0.17703274322418924,1,0,0,2,True,False,True,False,0,"label: bug
+file: src/services/rollup.ts","label: bug
+file: none",,"[""existence: named path is not a file in the repository; evidence: this run has not seen the named path in a search or read"", ""consistency: question requires none; every other label requires a file""]"
+planned_external,planned-4204-s03-796f29,4204,3,False,escalated,5,4842,4.86,0.0023568,0.21372150756037012,0.21372150756037012,0.23990069961633942,0,0,0,2,False,False,True,False,0,"label: bug
+file: none","label: bug
+file: none",,"[""consistency: question requires none; every other label requires a file"", ""consistency: question requires none; every other label requires a file""]"
+planned_external,planned-4205-s01-c56ed2,4205,1,True,completed,4,5351,4.536,0.0024698999999999997,0.191004437273094,0.191004437273094,0.0,0,0,0,1,False,True,False,False,0,"label: question
+file: none","label: question
+file: none","label: question
+file: none",[]
+planned_external,planned-4205-s02-88ac4a,4205,2,False,escalated,8,11807,9.17,0.0060017,0.3161193750584713,0.08859575264290392,0.20151557676115633,2,1,1,2,True,False,True,False,0,"label: question
+file: docs/ARCHITECTURE.md",label: question,,"[""consistency: question requires none; every other label requires a file"", ""format: start with label: <bug|feature|question|docs> and file: <path|none>""]"
+planned_external,planned-4205-s03-098bbc,4205,3,False,escalated,7,10239,7.849,0.0047745,0.227892234548336,0.10005282620179609,0.22757527733755942,1,0,0,2,True,False,True,False,0,"label: question
+file: docs/ARCHITECTURE.md",label: question,,"[""consistency: question requires none; every other label requires a file"", ""format: start with label: <bug|feature|question|docs> and file: <path|none>""]"
+planned_external,planned-4206-s01-808f26,4206,1,False,completed,8,9851,8.204,0.0053115,0.37608200455580865,0.10785876993166287,0.0,2,0,0,1,False,False,False,False,0,"label: bug
+file: src/export/csv.ts","label: bug
+file: src/export/csv.ts","label: bug
+file: src/export/csv.ts",[]
+planned_external,planned-4206-s02-160fc9,4206,2,False,completed,8,10025,9.64,0.0055441,0.3788322813345356,0.10674030658250676,0.0,2,0,0,1,False,False,False,False,0,"label: bug
+file: src/export/csv.ts","label: bug
+file: src/export/csv.ts","label: bug
+file: src/export/csv.ts",[]
+planned_external,planned-4206-s03-e71769,4206,3,False,escalated,6,6496,6.593,0.0039574,0.5835572272971521,0.16962206698907398,0.0,2,0,0,0,False,,False,False,0,,,,[]
